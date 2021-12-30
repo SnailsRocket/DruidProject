@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xubo.druid.mapper.CourseMapper">
+
+    <resultMap id="BaseResultMap" type="com.xubo.druid.entity.domain.Course">
+            <id property="cid" column="c_id" jdbcType="VARCHAR"/>
+            <result property="cname" column="c_name" jdbcType="VARCHAR"/>
+            <result property="tid" column="t_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        c_id,c_name,t_id
+    </sql>
+</mapper>

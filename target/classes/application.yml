@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: druidProject
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/druid?serverTimezone=CTT&characterEncoding=UTF-8&allowMultiQueries=true&rewriteBatchedStatements=true&tinyInt1isBit=false&multiStatementAllow=true
+    username: root
+    password: 123456
+server:
+  port: 8099
+logging:
+  level:
+    com.gbm.cloud.treasure.client.GbmApiClient: DEBUG

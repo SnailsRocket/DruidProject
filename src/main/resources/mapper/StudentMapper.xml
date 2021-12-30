@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xubo.druid.mapper.StudentMapper">
+
+    <resultMap id="BaseResultMap" type="com.xubo.druid.entity.domain.Student">
+            <id property="sid" column="s_id" jdbcType="VARCHAR"/>
+            <result property="sname" column="s_name" jdbcType="VARCHAR"/>
+            <result property="sbirth" column="s_birth" jdbcType="VARCHAR"/>
+            <result property="ssex" column="s_sex" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        s_id,s_name,s_birth,
+        s_sex
+    </sql>
+</mapper>

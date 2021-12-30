@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xubo.druid.mapper.ScoreMapper">
+
+    <resultMap id="BaseResultMap" type="com.xubo.druid.entity.domain.Score">
+            <id property="sid" column="s_id" jdbcType="VARCHAR"/>
+            <id property="cid" column="c_id" jdbcType="VARCHAR"/>
+            <result property="sscore" column="s_score" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        s_id,c_id,s_score
+    </sql>
+</mapper>
