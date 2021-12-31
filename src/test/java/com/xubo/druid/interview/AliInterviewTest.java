@@ -57,6 +57,12 @@ public class AliInterviewTest {
     @Test
     public void concurrentPrint() {
         ExecutorService threadPool = Executors.newFixedThreadPool(2);
+        threadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("threadRun" + Thread.currentThread().getName());
+            }
+        });
 
     }
 
