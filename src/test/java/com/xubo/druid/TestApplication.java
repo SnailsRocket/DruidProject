@@ -14,6 +14,9 @@ import java.util.HashMap;
 /**
  * @Author xubo
  * @Date 2021/12/27 15:14
+ * git详解   https://blog.csdn.net/qq_34609889/article/details/88733153
+ * 增量部署  远程调试
+ *
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
