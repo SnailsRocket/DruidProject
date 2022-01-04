@@ -11,7 +11,8 @@ fetch eg:修改了本地分支上的代码，然后提交了，生成新的commi
 文件夹中的master文件夹也修改成最新的commit id。
 pull eg: 我们在master上修改了代码。然后commit push到线上分支。这个时候heads和origin文件夹中的master已经更新成最新的commit id。，然后我们将master分支的代码pull到
 dev后，origin和heads中的commit id都更新成最新的id。
-    
+fetch + merge = pull
+直接pull会导致很多问题,所以一般不要直接pull。    
 
 
 ### 
