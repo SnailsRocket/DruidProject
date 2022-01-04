@@ -1,10 +1,10 @@
 package com.xubo.druid.thread;
 
+import com.sun.corba.se.impl.orbutil.threadpool.WorkQueueImpl;
+import com.sun.corba.se.spi.orbutil.threadpool.WorkQueue;
 import org.junit.Test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.*;
 
 /**
  * @Author xubo
@@ -32,6 +32,11 @@ public class ThreadTest {
     @Test
     public void createSingleThreadPool() {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
+    }
+
+    @Test
+    public void newFixedThreadPool(int nThreads) {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>());
     }
 
 }
