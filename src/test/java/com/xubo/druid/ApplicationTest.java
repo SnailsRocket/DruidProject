@@ -32,8 +32,6 @@ public class ApplicationTest {
 
     @Autowired
     TestjsonService testjsonService;
-    @Autowired
-    RestTemplate restTemplate;
 
     @Test
     public void updateRemark() {

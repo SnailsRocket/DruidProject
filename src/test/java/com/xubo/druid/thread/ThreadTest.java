@@ -15,13 +15,27 @@ public class ThreadTest {
 
     @Test
     public void createFixedThreadPool() {
-        ExecutorService pool = Executors.newFixedThreadPool(2);
+        ExecutorService pool = Executors.newFixedThreadPool(5);
+        for (int i = 0; i < 10; i++) {
+            pool.execute(new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println("线程" + Thread.currentThread().getName());
+                }
+            });
+        }
 
     }
 
     @Test
     public void createCacheThreadPool() {
         ExecutorService pool = Executors.newCachedThreadPool();
+        pool.execute(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("线程" + Thread.currentThread().getName());
+            }
+        });
     }
 
     @Test
@@ -35,7 +49,8 @@ public class ThreadTest {
     }
 
     @Test
-    public void newFixedThreadPool(int nThreads) {
+    public void newFixedThreadPool() {
+        int nThreads = 10;
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>());
     }
 
