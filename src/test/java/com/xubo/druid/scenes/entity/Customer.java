@@ -9,7 +9,7 @@ import java.util.Vector;
  * https://blog.csdn.net/csdn_wangchen/article/details/86623478  参考博客
  * 这个statement 方法里面功能太多了，如果我只用其中的计算积分的逻辑又得重新写一遍，一个方法建议只有一个逻辑，
  * 代码块越小，代码的功能越容易管理，代码处理和移动也就越方便
- * 重构还是多思考，这样进步才快
+ * 重构还是多思考，这样进步才快  还是得花时间在重构上面
  */
 public class Customer {
 
