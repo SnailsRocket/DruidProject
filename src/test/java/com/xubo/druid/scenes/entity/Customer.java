@@ -1,12 +1,16 @@
 package com.xubo.druid.scenes.entity;
 
+import java.util.Enumeration;
+import java.util.Vector;
+
 /**
  * @Author xubo
  * @Date 2022/1/4 17:57
  * https://blog.csdn.net/csdn_wangchen/article/details/86623478  参考博客
+ * 这个statement 方法里面功能太多了，如果我只用其中的计算积分的逻辑又得重新写一遍，一个方法建议只有一个逻辑，
+ * 代码块越小，代码的功能越容易管理，代码处理和移动也就越方便
  */
 public class Customer {
-
 
     private String name;
     private Vector<Rental> vectors = new Vector<>();
@@ -63,5 +67,48 @@ public class Customer {
         return result;
     }
 
+    /**
+     * 重构上面的statement方法
+     * 将上面的statement 方法重构成五个方法 计算单个积分 单个价格 计算总积分 总价格 以及 一个简化版的statement对象
+     *
+     * @return
+     */
+    public String statement1() {
+        double totalAmout = 0;
+        int integral = 0;
+        String result = "current customer is" + name + "rental \n";
+        Enumeration<Rental> rentals = vectors.elements();
+        while (rentals.hasMoreElements()) {
+            Rental rental = rentals.nextElement();
+            // 计算积分
+            integral += rental.getIntegral();
+            // 计算金额
+            totalAmout += rental.getCharge();
+            result += "\t" + rental.getMovie().getTitle() + "\t" + rental.getCharge() + "\n";
+        }
+        result += " your cost is " + totalAmout + " increment integral ：" + integral;
+        return result;
+    }
+
+    public double getTotalAmout() {
+        double totalAmount = 0;
+        Enumeration<Rental> rentals = vectors.elements();
+        while (rentals.hasMoreElements()) {
+            Rental rental = rentals.nextElement();
+            totalAmount += rental.getCharge();
+        }
+        return totalAmount;
+    }
+
+    public int getIntegral() {
+        int totalIntegral = 0;
+        Enumeration<Rental> rentals = vectors.elements();
+        while (rentals.hasMoreElements()) {
+            Rental rental = rentals.nextElement();
+            // 增加积分
+            totalIntegral += rental.getIntegral();
+        }
+        return totalIntegral;
+    }
 
 }
