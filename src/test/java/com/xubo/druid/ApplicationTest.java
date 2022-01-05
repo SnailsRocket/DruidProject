@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.xubo.druid.entity.domain.Testjson;
 import com.xubo.druid.service.TestjsonService;
+import com.xubo.druid.util.RedisUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class ApplicationTest {
     @Autowired
     TestjsonService testjsonService;
 
+    @Autowired
+    RedisUtils redisUtils;
+
     @Test
     public void updateRemark() {
         new RestTemplate();
@@ -46,7 +50,29 @@ public class ApplicationTest {
                 .eq(Testjson::getId, 1));
         System.out.println(update);
 
+    }
 
+    /**
+     * 设置过期时间为3分钟，每次刷新就更新过期时间
+     */
+    @Test
+    public void testRedis() {
+        long time = System.currentTimeMillis();
+        redisUtils.set("18627837596", time, 60);
+        try {
+            Thread.sleep(30000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String result = redisUtils.get("18627837596");
+        System.out.println(result);
+        try {
+            Thread.sleep(400000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        String result1 = redisUtils.get("18627837596");
+        System.out.println(result1);
     }
 
 

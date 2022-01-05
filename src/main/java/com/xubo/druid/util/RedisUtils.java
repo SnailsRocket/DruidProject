@@ -2,9 +2,14 @@ package com.xubo.druid.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -25,7 +30,21 @@ public class RedisUtils {
     @Autowired
     public RedisUtils(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
+        Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = getJackson2JsonRedisSerializer();
+        this.redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
+        this.redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
+        this.redisTemplate.setKeySerializer(new StringRedisSerializer());
+        this.redisTemplate.setHashKeySerializer(new StringRedisSerializer());
         valueOperations=redisTemplate.opsForValue();
+    }
+
+    public Jackson2JsonRedisSerializer getJackson2JsonRedisSerializer() {
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(Object.class);
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
+        objectMapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        jackson2JsonRedisSerializer.setObjectMapper(objectMapper);
+        return jackson2JsonRedisSerializer;
     }
 
     /**  默认过期时长，单位：秒 */
