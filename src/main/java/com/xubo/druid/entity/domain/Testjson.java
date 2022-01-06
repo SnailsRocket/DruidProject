@@ -34,6 +34,8 @@ public class Testjson implements Serializable {
      */
     private Integer age;
 
+    private String testnull;
+
     /**
      * 备注
      * {""}
