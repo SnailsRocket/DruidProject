@@ -82,10 +82,16 @@ public class Student implements BeanFactoryAware, BeanNameAware, InitializingBea
         System.out.println("InitializingBean的实现afterPropertiesSet 能否获取到属性：" + this.getName() + " - " + this.getAge());
     }
 
+    /**
+     * 在 @Bean 注解里面加上 initMethod = "customeInit" 指定类初始化方法是customeInit
+     */
     public void customeInit(){
         System.out.println("Student : 自定义的初始化方法");
     }
 
+    /**
+     * 在@Bean 中 用destroyMethod = "customDestroy" 指定类的初始化方法为 customDestroy
+     */
     public void customDestroy(){
         System.out.println("Student : 自定义的销毁方法");
     }
