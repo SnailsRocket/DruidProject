@@ -52,6 +52,19 @@ public class ApplicationTest {
 
     }
 
+
+    @Test
+    public void updateRemark1() {
+        new RestTemplate();
+        Testjson testjson = new Testjson();
+        testjson.setName("fsfds");
+        testjson.setTestnull("null");
+        boolean save = testjsonService.save(testjson);
+        System.out.println(save);
+
+    }
+
+
     /**
      * 设置过期时间为3分钟，每次刷新就更新过期时间
      */
