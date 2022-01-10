@@ -2,7 +2,7 @@ package com.xubo.druid.http;
 
 /**
  * @Author xubo
- * @Date 2022/1/7 17:48
+ * @Date 2022/1/7 15:28
  */
-public class WmsService {
+public class WMSService {
 }
