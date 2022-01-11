@@ -65,6 +65,15 @@ public class ApplicationTest {
     }
 
 
+    @Test
+    public void setParams() {
+        Testjson testjson = new Testjson();
+        testjson.setName(null);
+        testjson.setAge(12);
+        System.out.println(testjson);
+    }
+
+
     /**
      * 设置过期时间为3分钟，每次刷新就更新过期时间
      */
