@@ -28,6 +28,7 @@ public class AbstractObjectTypeHandler<T> extends BaseTypeHandler<T> {
     @Override
     public T getNullableResult(ResultSet resultSet, String columnName) throws SQLException {
         String columnStrDate = resultSet.getString(columnName);
+        T t = JSON.parseObject(columnStrDate, (Class<T>) getRawType());
         return StringUtils.isBlank(columnStrDate) ? null : JSON.parseObject(columnStrDate, (Class<T>) getRawType());
     }
 

@@ -7,6 +7,7 @@ import com.xubo.druid.service.TestjsonService;
 import com.xubo.druid.util.RedisUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
@@ -95,6 +96,16 @@ public class ApplicationTest {
         }
         String result1 = redisUtils.get("18627837596");
         System.out.println(result1);
+    }
+
+    @Test
+    public void testBeanUtils() {
+        Testjson t1 = new Testjson();
+        t1.setName("druid");
+        t1.setAge(12);
+        Testjson t2 = new Testjson();
+        BeanUtils.copyProperties(t2,t1);
+        System.out.println(t2);
     }
 
 

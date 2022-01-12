@@ -10,4 +10,8 @@ server:
   port: 8099
 logging:
   level:
-    com.gbm.cloud.treasure.client.GbmApiClient: DEBUG
+    com.xubo.druid.mapper: DEBUG
+mybatis-plus:
+  type-handlers-package: com.xubo.druid.handler
+  type-enums-package: com.xubo.druid.entity.*
+

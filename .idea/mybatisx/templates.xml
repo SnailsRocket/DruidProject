@@ -63,8 +63,8 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="Testjson" />
-                  <option name="tableName" value="testjson" />
+                  <option name="className" value="FooBar" />
+                  <option name="tableName" value="foo_bar" />
                 </TableUIInfo>
               </list>
             </option>

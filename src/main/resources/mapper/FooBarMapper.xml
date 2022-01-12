@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xubo.druid.mapper.FooBarMapper">
+
+    <resultMap id="BaseResultMap" type="com.xubo.druid.entity.domain.FooBar">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="age" column="age" jdbcType="INTEGER"/>
+            <result property="bar" column="bar" jdbcType="VARCHAR" typeHandler="com.xubo.druid.handler.BarTypeHandler"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,description,name,
+        age,bar
+    </sql>
+</mapper>
