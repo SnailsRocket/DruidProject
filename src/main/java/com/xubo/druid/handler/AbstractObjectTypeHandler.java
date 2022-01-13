@@ -18,7 +18,7 @@ import java.sql.*;
  * 继承 BaseTypeHandler 这个抽象类  实现下面四个方法
  *
  */
-public class AbstractObjectTypeHandler<T> extends BaseTypeHandler<T> {
+public abstract class AbstractObjectTypeHandler<T> extends BaseTypeHandler<T> {
 
     @Override
     public void setNonNullParameter(PreparedStatement preparedStatement, int i, T params, JdbcType jdbcType) throws SQLException {

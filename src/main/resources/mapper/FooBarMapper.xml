@@ -10,10 +10,11 @@
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="age" column="age" jdbcType="INTEGER"/>
             <result property="bar" column="bar" jdbcType="VARCHAR" typeHandler="com.xubo.druid.handler.BarTypeHandler"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR" typeHandler="com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler"></result>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,description,name,
-        age,bar
+        age,bar,remark
     </sql>
 </mapper>
