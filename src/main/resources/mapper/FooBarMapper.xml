@@ -11,6 +11,7 @@
             <result property="age" column="age" jdbcType="INTEGER"/>
             <result property="bar" column="bar" jdbcType="VARCHAR" typeHandler="com.xubo.druid.handler.BarTypeHandler"/>
             <result property="remark" column="remark" jdbcType="VARCHAR" typeHandler="com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler"></result>
+            <!-- <result property="remark" column="remark" jdbcType="VARCHAR" typeHandler="com.xubo.druid.handler.RemarkTypeHandler"></result> -->
     </resultMap>
 
     <sql id="Base_Column_List">

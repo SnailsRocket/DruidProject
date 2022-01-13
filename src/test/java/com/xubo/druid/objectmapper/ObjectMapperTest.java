@@ -17,6 +17,9 @@ import java.util.*;
  * @Date 2022/1/13 11:13
  * ObjectMapper  实体类 String 互转  JacksonTypeHandler 类里面有使用到
  * https://www.cnblogs.com/xuwenjin/p/8976696.html
+ *
+ * FastJsonTypeHandler  JacksonTypeHandler 的 区别
+ * https://blog.csdn.net/Dream_Weave/article/details/109782535
  */
 public class ObjectMapperTest {
 

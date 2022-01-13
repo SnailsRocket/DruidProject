@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.handlers.FastjsonTypeHandler;
 import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
 import com.xubo.druid.handler.BarTypeHandler;
+import com.xubo.druid.handler.RemarkTypeHandler;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +21,7 @@ import java.util.Map;
  * 
  * @TableName foo_bar
  */
-@TableName(value ="foo_bar")
+@TableName(value ="foo_bar",autoResultMap = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -53,6 +54,7 @@ public class FooBar implements Serializable {
     @TableField(typeHandler = BarTypeHandler.class)
     private Bar bar;
 
+//    @TableField(typeHandler = RemarkTypeHandler.class)
     @TableField(typeHandler = JacksonTypeHandler.class)
     private Map<String, Object> remark;
 
