@@ -44,7 +44,7 @@ public abstract class AbstractObjectTypeHandler<T> extends BaseTypeHandler<T> {
         return StringUtils.isBlank(json) ? null : this.parse(json);
     }
 
-    public T parse(String json) {
+    protected T parse(String json) {
         try {
             return JSONObject.parseObject(json, (Class<T>) getRawType());
         } catch (Exception e) {
@@ -52,7 +52,7 @@ public abstract class AbstractObjectTypeHandler<T> extends BaseTypeHandler<T> {
         }
     }
 
-    public String toJson(T t) {
+    protected String toJson(T t) {
         try {
             return JSONObject.toJSONString(t);
         } catch (Exception e) {

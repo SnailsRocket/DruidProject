@@ -1,7 +1,11 @@
 package com.xubo.druid.handler;
 
+import cn.hutool.core.lang.Assert;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.ibatis.type.JdbcType;
+import org.apache.ibatis.type.MappedJdbcTypes;
+import org.apache.ibatis.type.MappedTypes;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,31 +22,48 @@ import java.util.Map;
  * https://blog.csdn.net/Dream_Weave/article/details/109782535
  * 一定要加上 @TableName(autoResultMap = true)
  * 使用 RemarkTypeHandler 或者 JacksonTypeHandler都可以
+ *
+ * Mybatis-plus 插入 查询的坑  null
+ * https://www.jianshu.com/p/1fbaff7fb187
+ *
  */
-public class RemarkTypeHandler extends AbstractObjectTypeHandler<HashMap<String,Object>> {
+@MappedTypes({Object.class})
+@MappedJdbcTypes({JdbcType.VARCHAR})
+public class RemarkTypeHandler extends AbstractObjectTypeHandler<Object> {
 
     private static final Logger log = LoggerFactory.getLogger(RemarkTypeHandler.class);
     private static ObjectMapper mapper = new ObjectMapper();
     private Class<Object> type;
 
-    public HashMap<String, Object> parse(String json) {
+    public RemarkTypeHandler(Class<Object> type) {
+        if(log.isTraceEnabled()) {
+            log.trace("RemarkTypeHandler(" + type + ")");
+        }
+        Assert.notNull(type, "Type argument cannot be null", new Object[0]);
+        this.type = type;
+    }
+
+    protected Object parse(String json) {
         try {
-            return (HashMap<String, Object>) mapper.readValue(json, Map.class);
+            return mapper.readValue(json, this.type);
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected String toJson(Object object) {
+        try {
+            return mapper.writeValueAsString(object);
+        } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
         System.out.println("failed");
         return null;
     }
 
-    public String toJson(HashMap<String, Object> map) {
-        try {
-            return mapper.writeValueAsString(map);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        System.out.println("failed");
-        return null;
+    public static void setObjectMapper(ObjectMapper objectMapper) {
+        Assert.notNull(objectMapper, "ObjectMapper should not be null", new Object[0]);
+        RemarkTypeHandler.mapper = objectMapper;
     }
 
 }
