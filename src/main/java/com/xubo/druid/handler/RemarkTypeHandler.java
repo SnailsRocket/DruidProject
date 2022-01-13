@@ -25,6 +25,7 @@ import java.util.Map;
  *
  * Mybatis-plus 插入 查询的坑  null
  * https://www.jianshu.com/p/1fbaff7fb187
+ * https://www.jianshu.com/p/7f8a5016c785
  *
  */
 @MappedTypes({Object.class})

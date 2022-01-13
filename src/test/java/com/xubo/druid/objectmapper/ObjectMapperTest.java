@@ -20,6 +20,12 @@ import java.util.*;
  *
  * FastJsonTypeHandler  JacksonTypeHandler 的 区别
  * https://blog.csdn.net/Dream_Weave/article/details/109782535
+ *
+ * ObjectMapper 简介
+ * https://blog.csdn.net/qq_41834086/article/details/111152470
+ *
+ * TypeHandler
+ * https://blog.csdn.net/qq271859852/article/details/103330914
  */
 public class ObjectMapperTest {
 
