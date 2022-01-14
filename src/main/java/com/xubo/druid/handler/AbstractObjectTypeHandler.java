@@ -14,9 +14,12 @@ import java.sql.*;
  * git
  * @Author xubo
  * @Date 2022/1/11 15:50
- * Mybatis 优雅的缓存 json https://blog.csdn.net/qq271859852/article/details/103330914
+ * Mybatis 优雅的缓存 json  从源码的角度分析
+ * https://blog.csdn.net/qq271859852/article/details/103330914
+ *
  * 自定义实体类 类型转换
  * 继承 BaseTypeHandler 这个抽象类  实现下面四个方法
+ * BaseTypeHandler 继承 TypeReference ，TypeReference中 getSuperclassTypeParameter() 提取泛型具体类，也就是这个里面的T，后面的类继承AbstractObjectTypeHandler 会传具体的实体类
  *
  */
 public abstract class AbstractObjectTypeHandler<T> extends BaseTypeHandler<T> {
