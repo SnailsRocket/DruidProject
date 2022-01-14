@@ -24,7 +24,7 @@ import java.util.*;
  * ObjectMapper 简介
  * https://blog.csdn.net/qq_41834086/article/details/111152470
  *
- * TypeHandler
+ * Mybatis&Mybatisplus 优雅存取JSON
  * https://blog.csdn.net/qq271859852/article/details/103330914
  */
 public class ObjectMapperTest {
