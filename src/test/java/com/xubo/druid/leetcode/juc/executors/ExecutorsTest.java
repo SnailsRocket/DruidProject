@@ -188,5 +188,10 @@ public class ExecutorsTest {
     }
 
 
-
+    public static void main(String[] args) {
+        System.out.println(Integer.valueOf(5).compareTo(3));
+        List<Integer> arr1 = Arrays.asList(1,2,3);
+        List<Integer> arr2 = Arrays.asList(1,2,3,4,5,6);
+        System.out.println(arr1.containsAll(arr2));
+    }
 }
