@@ -14,6 +14,7 @@ import java.util.List;
  * 直接copy 整个List数据 到另一个List数据 有一个条件，就是两个对象的属性名必须一直才可以，如果不一致就为null
  * 使用ObjectMapper 进行操作的
  * JacksonTypeHandler 这个里面也是使用的ObjectMapper
+ * ObjectMapper 可以需要多研究一下，写一篇笔记
  */
 public class ConvertListDate {
 
