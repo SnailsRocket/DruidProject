@@ -1,6 +1,7 @@
 package com.xubo.druid.leetcode.juc.executors;
 
 import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @Author xubo
@@ -142,4 +144,54 @@ public class ExecutorsTest {
 
     }
 
+    /**
+     *  CompletableFuture 的用法
+     */
+    @Test
+    public void testCompletableFuture() {
+        List<Integer> arrList = Arrays.asList(1, 2, 3, 4, 5);
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+        List<CompletableFuture<List<JSONObject>>> completableFutures = arrList.stream().map(param -> CompletableFuture.supplyAsync(
+                () -> {
+                    return Arrays.asList(new JSONObject());
+                }, executorService
+        )).collect(Collectors.toList());
+
+        List<List<JSONObject>> collect = completableFutures.stream().map(CompletableFuture::join).collect(Collectors.toList());
+        List<JSONObject> collect1 = collect.stream().flatMap(e -> e.stream()).collect(Collectors.toList());
+        System.out.println(collect1.size());
+    }
+
+    /**
+     * stream   map  与 flatMap 的区别
+     * whak
+     */
+    @Test
+    public void testStreamMap() {
+        List<Integer> arrList = Arrays.asList(1, 2, 3, 4, 5);
+        ExecutorService executorService = Executors.newCachedThreadPool();
+        List<CompletableFuture<List<JSONObject>>> completableFutures = arrList.stream().map(param -> CompletableFuture.supplyAsync(
+                () -> {
+                    return Arrays.asList(new JSONObject());
+                }, executorService
+        )).collect(Collectors.toList());
+
+        List<List<JSONObject>> collect = completableFutures.stream().map(CompletableFuture::join).collect(Collectors.toList());
+
+        // map
+        List<Stream<JSONObject>> collect1 = collect.stream().map(e -> e.stream()).collect(Collectors.toList());
+
+        // flatMap
+        List<JSONObject> collect2 = collect.stream().flatMap(e -> e.stream()).collect(Collectors.toList());
+
+
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(Integer.valueOf(5).compareTo(3));
+        List<Integer> arr1 = Arrays.asList(1,2,3);
+        List<Integer> arr2 = Arrays.asList(1,2,3,4,5,6);
+        System.out.println(arr1.containsAll(arr2));
+    }
 }

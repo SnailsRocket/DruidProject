@@ -84,6 +84,7 @@ public class ApplicationTest {
     public void testRedis() {
         long time = System.currentTimeMillis();
         redisUtils.set("18627837596", time, 60);
+        //redisUtils.set();
         try {
             Thread.sleep(30000);
         } catch (InterruptedException e) {
