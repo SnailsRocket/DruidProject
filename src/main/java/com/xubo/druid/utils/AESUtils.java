@@ -5,10 +5,12 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.spec.SecretKeySpec;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.xubo.druid.entity.pay.LoginNotify;
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.DigestUtils;
 
 import java.security.Key;
 import java.security.SecureRandom;
@@ -180,15 +182,28 @@ public class AESUtils {
     public static void main(String[] args) {
 
         String srcString = "1234567890";
-        String str = "{\"partner\":\"123456789\",\"user_id\":\"123456\",\"mobile\":\"13888888888\"}";
+        String str = "{\"partner\":\"123456789\",\"user_id\":\"123456\",\"mobile\":\"136273217\"}";
+        String str1 = "shop_jz";
+        String str2 = "34ED8E5A18667634AC0425335ECE9F59B279825CB098494F8B26DBCDAF02C7D3B459C007F6B088052BA17AC12C19E1705E361B278683DF4311FEB49E3CC0EB48CE48C21ED35A40FACD929A1BF25FC595";
+        String str3 = "HiFVwg2zNz3LjQCpOKhHIh84mJ+vQtjB/TT3DHtlIediWduqD8nBzABkIr6TmOaYMvkMJ5erTKyrLGJNJVjir/Tr3vzfuuDxisqQKAAIEXk=";
 
         try {
 
             // 加密
             String encryptedString = encrypt(DEFAULT_KEY, str);
             System.out.println(encryptedString);
+            String encrypt = encrypt(DEFAULT_KEY, str1);
+            System.out.println(encrypt);
             // 解密
             String decryptedString = decrypt(DEFAULT_KEY, encryptedString);
+            String decrypt = decrypt(DEFAULT_KEY, str2);
+             JSONObject jsonObject = JSONObject.parseObject(decrypt, JSONObject.class);
+//            String decrypt1 = decrypt(DEFAULT_KEY, str3);
+//            System.out.println("Str3 : "+decrypt1);
+            byte[] bytes = DigestUtils.md5Digest(str.getBytes());
+            System.out.println("md5 :" + String.valueOf(bytes));
+
+            System.out.println("123:"+decrypt);
             System.out.println(decryptedString);
             LoginNotify loginNotify = JSON.parseObject(decryptedString, LoginNotify.class);
             System.out.println(loginNotify);

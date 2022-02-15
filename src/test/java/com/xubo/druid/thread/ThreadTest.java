@@ -6,6 +6,7 @@ import org.apache.commons.lang.time.DateFormatUtils;
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
 
+import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
@@ -100,6 +101,9 @@ public class ThreadTest {
         byte[] bytes = DigestUtils.md5Digest(str.getBytes());
         String s = new String(bytes);
         System.out.println(s);
+        BigDecimal ten = BigDecimal.TEN;
+        String s1 = String.valueOf(ten);
+        System.out.println(s1);
 
     }
 
