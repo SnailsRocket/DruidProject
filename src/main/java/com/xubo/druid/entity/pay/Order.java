@@ -5,26 +5,26 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * @Author xubo
- * @Date 2022/2/7 11:03
+ * @Date 2022/2/17 16:28
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class LoginNotify {
+public class Order {
 
-    public String partner;
+    public Integer id;
 
-    public String userId;
+    public String orderId;
 
-    public String mobile;
+    public String orderDesc;
 
-    public Date createTime;
+    public Integer orderState;
 
-    public String data;
+    public LocalDateTime CreateTime;
 
 }
