@@ -93,4 +93,10 @@ public class MulProcessListTest {
         System.out.println(students);
 
     }
+
+
+    public static void main(String[] args) {
+        Integer integer = Integer.valueOf(String.valueOf(0));
+        System.out.println(integer);
+    }
 }

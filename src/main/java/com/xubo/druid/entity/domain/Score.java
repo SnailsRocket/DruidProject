@@ -23,18 +23,19 @@ public class Score implements Serializable {
     /**
      * 
      */
-    @TableId
+    @TableField("s_id")
     private String sid;
 
     /**
      * 
      */
-    @TableId
+    @TableField("c_id")
     private String cid;
 
     /**
      * 
      */
+    @TableField("s_score")
     private Integer sscore;
 
     @TableField(exist = false)

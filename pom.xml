@@ -47,6 +47,12 @@
     </properties>
 
     <dependencies>
+        <!-- redisson -->
+        <dependency>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.13.2</version>
+        </dependency>
         <!-- ObjectMapper 对象映射 Object 转 josn  json 转 Object -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

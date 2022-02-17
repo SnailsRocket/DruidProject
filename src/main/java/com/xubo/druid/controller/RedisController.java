@@ -3,6 +3,10 @@ package com.xubo.druid.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.xubo.druid.entity.domain.Student;
+import com.xubo.druid.service.RedisService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.lang.reflect.Field;
@@ -14,7 +18,11 @@ import java.util.stream.Collectors;
  * @Date 2022/1/26 9:04
  */
 @RestController
+@RequestMapping("/redis")
 public class RedisController {
+
+    @Autowired
+    RedisService redisService;
 
     public static void main(String[] args) {
         List<Integer> arrsList = Arrays.asList(1, 2, 3, 4, 5);
@@ -41,8 +49,17 @@ public class RedisController {
             }
         }
         Set<String> keySet = paramMap.keySet();
-
-
     }
+
+    @GetMapping("/lock")
+    public JSONObject useRedisLock() {
+        return redisService.useRedisLockToUpdateDB();
+    }
+
+    @GetMapping("/order")
+    public JSONObject executeByOrder() {
+        return redisService.executeByOrder();
+    }
+
 
 }
