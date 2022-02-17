@@ -49,8 +49,25 @@ public class ScoreServiceImpl extends ServiceImpl<ScoreMapper, Score>
             e.printStackTrace();
         } finally {
             System.out.println("getLists 释放锁！");
-            reentrantLock.unlock();
         }
+        /*ReentrantLock reentrantLock = new ReentrantLock(true);
+        try {
+            if(reentrantLock.tryLock()) {
+                List<Score> result = this.list();
+                try {
+                    Thread.sleep(1000);
+                    System.out.println(Thread.currentThread().getName());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                return result;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println("getLists 释放锁！");
+            reentrantLock.unlock();
+        }*/
         return null;
     }
 
