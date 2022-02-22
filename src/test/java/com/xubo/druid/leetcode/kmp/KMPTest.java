@@ -1,6 +1,7 @@
 package com.xubo.druid.leetcode.kmp;
 
 import org.junit.Test;
+import org.springframework.util.DigestUtils;
 
 /**
  * @Author xubo
@@ -51,5 +52,74 @@ public class KMPTest {
         } else {
             System.out.println(-1);
         }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @Test
+    public void findStrIndex() {
+        String t = "hello";
+        String p = "ll";
+        char[] tChars = t.toCharArray();
+        char[] pChars = p.toCharArray();
+        int i = 0;
+        int j = 0;
+        while(i < tChars.length && j < pChars.length) {
+            if(tChars[i] == pChars[j]) {
+                i++;
+                j++;
+            } else {
+                i = i - j + 1;
+                j = 0;
+            }
+        }
+        if(j == pChars.length) {
+            System.out.println(i - j);
+        } else {
+            System.out.println(-1);
+        }
+    }
+
+    /**
+     * kmp 算法
+     */
+    @Test
+    public void testKMP() {
+        String p = "ll";
+        char[] pChars = p.toCharArray();
+        int[] next = new int[pChars.length];
+        next[0] = -1;
+        int j = 0;
+        int k = -1;
+        while (j < pChars.length - 1) {
+            if(k == -1 || pChars[j] == pChars[k]) {
+                next[j++] = ++k;
+            } else {
+                k = next[k];
+            }
+        }
+        System.out.println(next[0] + " : " + next[1]);
     }
 }
