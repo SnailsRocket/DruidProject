@@ -1,7 +1,14 @@
 package com.xubo.druid.leetcode.kmp;
 
+import com.xubo.druid.entity.domain.Score;
+import com.xubo.druid.entity.domain.Student;
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * @Author xubo
@@ -122,4 +129,20 @@ public class KMPTest {
         }
         System.out.println(next[0] + " : " + next[1]);
     }
+
+    @Test
+    public void bigDecimal() {
+        List<Score> scoreList = Arrays.asList(Score.builder().sid("1").sscore(20).build(),
+                Score.builder().sid("2").sscore(10).build(),
+                Score.builder().sid("3").sscore(30).build(),
+                Score.builder().sid("4").sscore(40).build(),
+                Score.builder().sid("5").sscore(50).build(),
+                Score.builder().sid("6").sscore(25).build()
+        );
+
+        Score score = scoreList.stream().max(Comparator.comparing(e -> e.getSscore())).get();
+        System.out.println(score);
+
+    }
+
 }

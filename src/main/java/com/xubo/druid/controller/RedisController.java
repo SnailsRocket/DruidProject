@@ -53,7 +53,7 @@ public class RedisController {
 
     @GetMapping("/lock")
     public JSONObject useRedisLock() {
-        return redisService.useRedisLockToUpdateDB();
+        return redisService.useRedissonLock();
     }
 
     @GetMapping("/order")

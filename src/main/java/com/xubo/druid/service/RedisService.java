@@ -10,7 +10,11 @@ public interface RedisService {
 
     JSONObject useRedisLock();
 
+    JSONObject useRedissonLock();
+
     JSONObject useRedisLockToUpdateDB();
 
     JSONObject executeByOrder();
+
+    JSONObject getLock();
 }
