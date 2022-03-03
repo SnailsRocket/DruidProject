@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.xubo.druid.entity.domain.Student;
 import com.xubo.druid.service.RedisService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ import java.util.stream.Collectors;
  */
 @RestController
 @RequestMapping("/redis")
+@Api(value = "Redis接口")
 public class RedisController {
 
     @Autowired
@@ -51,6 +54,7 @@ public class RedisController {
         Set<String> keySet = paramMap.keySet();
     }
 
+    @ApiOperation(value = "redisson 操作锁")
     @GetMapping("/lock")
     public JSONObject useRedisLock() {
         return redisService.useRedissonLock();
