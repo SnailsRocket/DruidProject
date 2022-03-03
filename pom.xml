@@ -47,6 +47,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.11</version>
+        </dependency>
         <!--rabbitmq依赖 -->
         <dependency>
             <groupId>org.springframework.amqp</groupId>
