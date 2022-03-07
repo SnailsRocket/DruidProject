@@ -12,8 +12,13 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Author xubo
@@ -45,6 +50,20 @@ public class Swagger2Config {
                 .termsOfServiceUrl("http://127.0.0.1:8089")
                 .version("1.0")
                 .build();
+    }
+
+    public static void main(String[] args) throws FileNotFoundException {
+        FileReader fileReader = new FileReader("E:\\xubo\\note\\privoce\\privoce.txt");
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        try {
+            String line = bufferedReader.readLine();
+            while (line != null) {
+                line = bufferedReader.readLine();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }
