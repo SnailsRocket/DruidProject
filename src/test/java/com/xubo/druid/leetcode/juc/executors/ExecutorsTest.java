@@ -15,6 +15,8 @@ import java.util.stream.Stream;
  * @Author xubo
  * @Date 2022/1/19 14:05
  * Callable  跟 Runnable 的区别
+ * FixedThreadPool和SingleThreadPool  允许的请求队列长度为Integer.MAX_VALUE，可能会堆积大量的请求，从而导致OOM。
+ * CachedThreadPool  允许的创建线程数量为Integer.MAX_VALUE，可能会创建大量的线程，从而导致OOM。
  */
 public class ExecutorsTest {
 
@@ -22,7 +24,7 @@ public class ExecutorsTest {
     public void testSingleThread() {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         // ExecutorService executorService = Executors.newFixedThreadPool(3);
-        executorService.submit( () -> {
+        executorService.submit(() -> {
             System.out.println(Thread.currentThread().getName());
         });
         executorService.shutdown();
@@ -122,7 +124,6 @@ public class ExecutorsTest {
     /**
      * newWorkStealingPool 返回一个 ForkJoinPool 的线程池
      * ForkJoinPool 默认主机CPU的可用核心数作为线程数
-     *
      */
     @Test
     public void testForkJoinPool() {
@@ -132,7 +133,7 @@ public class ExecutorsTest {
     }
 
     @Test
-    public void testScheduledThread() throws InterruptedException{
+    public void testScheduledThread() throws InterruptedException {
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(5);
         Runnable task = () -> System.out.println("Scheduling" + System.nanoTime());
 
@@ -145,7 +146,7 @@ public class ExecutorsTest {
     }
 
     /**
-     *  CompletableFuture 的用法
+     * CompletableFuture 的用法
      */
     @Test
     public void testCompletableFuture() {
@@ -190,8 +191,8 @@ public class ExecutorsTest {
 
     public static void main(String[] args) {
         System.out.println(Integer.valueOf(5).compareTo(3));
-        List<Integer> arr1 = Arrays.asList(1,2,3);
-        List<Integer> arr2 = Arrays.asList(1,2,3,4,5,6);
+        List<Integer> arr1 = Arrays.asList(1, 2, 3);
+        List<Integer> arr2 = Arrays.asList(1, 2, 3, 4, 5, 6);
         System.out.println(arr1.containsAll(arr2));
     }
 }
