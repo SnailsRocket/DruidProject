@@ -154,7 +154,7 @@ public class AESStrUtilsOrder {
     }
     public static void main(String[] args) {
         String content = "null";
-        String password = "abc";
+        String password = "ccbftsr";
         // 加密
         System.out.println("加密前：" + content);
         byte[] encryptResult = encrypt(content, password);
