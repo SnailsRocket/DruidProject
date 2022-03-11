@@ -4,15 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 import com.xubo.druid.config.ThreadPoolConfig;
 import com.xubo.druid.service.ThreadPoolService;
+import com.xubo.druid.util.DateUtils;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -110,6 +108,21 @@ public class ThreadPoolServiceImpl implements ThreadPoolService {
     public static void main(String[] args) {
         System.out.println(String.valueOf(new Date().getTime()));
         System.out.println(System.currentTimeMillis());
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.HOUR_OF_DAY, -24);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        Date time = calendar.getTime();
+        String dateFormat = DateUtils.getDateFormat(time, "yyyy-MM-dd HH:mm:ss");
+        System.out.println(dateFormat);
+        calendar.set(Calendar.HOUR_OF_DAY, 23);
+        calendar.set(Calendar.MINUTE, 59);
+        calendar.set(Calendar.SECOND, 60);
+        Date end = calendar.getTime();
+        String endStr = DateUtils.getDateFormat(end, "yyyy-MM-dd HH:mm:ss");
+        System.out.println(endStr);
 
     }
 

@@ -4,9 +4,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @Author xubo
@@ -47,5 +49,33 @@ public class ThreadPoolConfig {
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.setThreadFactory(threadFactory);
         return executor;
+    }
+
+    public static void main(String[] args) {
+
+        String str = "管城区";
+        String str1 = "管城回族区";
+        Integer integer = new Integer(1);
+        System.out.println(integer == 1);
+        List<String> strings = Arrays.asList("1", "2", "3", "4", "5", "1", "2","6","7","9","10","13","16","19");
+        List<String> collect = strings.stream().distinct().collect(Collectors.toList());
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        List<CompletableFuture<Void>> collect1 = strings.stream().map(e -> CompletableFuture.runAsync(() -> {
+            System.out.println(Thread.currentThread().getId() + "=" + Thread.currentThread().getName());
+            System.out.println(e);
+        }, executorService)).collect(Collectors.toList());
+        List<Void> collect2 = collect1.stream().map(CompletableFuture::join).collect(Collectors.toList());
+        System.out.println(collect2);
+//        System.out.println(collect);
+//        System.out.println(collect.size());
+        Random random = new Random();
+//        System.out.println(random.nextInt(9));
+        List<CompletableFuture<String>> completableFutures = strings.stream().map(e -> CompletableFuture.supplyAsync(() -> {
+            System.out.println(Thread.currentThread().getId() + "=" + Thread.currentThread().getName());
+            return e;
+        }, executorService)).collect(Collectors.toList());
+        List<String> stringList = completableFutures.stream().map(CompletableFuture::join).collect(Collectors.toList());
+        System.out.println(stringList);
+
     }
 }
