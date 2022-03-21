@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
+import java.util.List;
+
 
 /**
  * @Author xubo
@@ -32,6 +35,23 @@ public class ThreadPoolController {
 
     @PostMapping("/supplyAsync")
     public JSONObject supplyAsync(@RequestBody JSONObject jsonObject) {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+        Integer a = Integer.valueOf(10);
+        String b = "";
+
+        list.forEach(e -> e.equals(b));
         return threadPoolService.executeByCompletableFeture1(jsonObject);
+    }
+
+    public static void main(String[] args) {
+
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
+
+        Integer a = Integer.valueOf(10);
+        String b = "";
+
+        list.forEach(e -> e.equals(b));
+
     }
 }
