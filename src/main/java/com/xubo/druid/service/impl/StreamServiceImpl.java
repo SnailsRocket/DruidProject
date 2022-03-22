@@ -42,7 +42,8 @@ public class StreamServiceImpl implements StreamService {
     public JSONObject peek(JSONObject jsonObject) {
         List<String> filterList = Stream.of("one", "two", "fthree", "four", "five").filter(e -> e.length() > 3)
                 .peek(e -> System.out.println("filter value: "  + e))
-                .map(String::toUpperCase)
+//                .map(String::toUpperCase)
+                .peek(String::toUpperCase)
                 .peek(e -> System.out.println("upperCase: " + e))
                 .peek(e -> e.replace("f", "D"))
                 .collect(Collectors.toList());
