@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.security.Key;
 import java.security.Security;
@@ -156,37 +157,41 @@ public class PayAesUtils {
      */
     public static void main(String[] args ){
         String encryptStr = "F996AB6027EAA8EEF25908F1B8F1467EF9E142BF8BC3DDB44DC873993D12982D9B027F13DA572718FAB626E4D408AB43";
-        String key = "EPQLHJLCNURHNUZA";   // ECPB2CABCDEFGHIJ
+//        String key = "EPQLHJLCNURHNUZA";   // ECPB2CABCDEFGHIJ  ccbftsr
+        String key = "ccbftsr";   // ECPB2CABCDEFGHIJ  ccbftsr
         String encryptStr1 = "7FF01629D32F42D6AE82D5B2E505D9FC536FD733F39CFCC0C86C37FE88837092F11DA18835E804D876552132E4951D36D555038714108B94AE4602592904C83F";
         String tranSid = String.valueOf(new Date().getTime());
         String reqTime = String.valueOf(new Date().getTime());
         JSONObject jsonObj = new JSONObject();
-        jsonObj.put("tranSid", tranSid);
+        /*jsonObj.put("tranSid", tranSid);
         jsonObj.put("requestTime", reqTime);
 //        jsonObj.put("mobileNo", "18550000000");
-        jsonObj.put("mobileNo", "18551111112");
         jsonObj.put("name", "王五");
         jsonObj.put("idType", "01");
         jsonObj.put("idNumber", "420117");
         jsonObj.put("openId", "1234");
-        jsonObj.put("subChannel", "sub");
+        jsonObj.put("subChannel", "sub");*/
+        jsonObj.put("mobile", "18551111112");
+        jsonObj.put("userId", "1234567890");
+        jsonObj.put("token", "hederfhedh9894325");
         try {
             //加密
-            /*String encryptedString = encrypt(key,jsonObj.toString());
+            String encryptedString = encrypt(key,jsonObj.toString());
 //            System.out.println("http://buy.ccb.com/openLoginInterface.jhtml?channelNo=test1&toUrl=" + URLEncoder.encode("http://buy.ccb.com/client/index.jhtml?aaa=xxx&bbb=xxx", "utf-8") + "&loginParams="+
             System.out.println("http://buy.ccb.com/openLoginInterface.jhtml?channelNo=test1&toUrl=" + URLEncoder.encode("https://mgb.cn/test_shop_jz/#/?p1=jz", "utf-8") + "&loginParams="+
                     encryptedString +"&requestTime="+ reqTime +"&tranSid=" + tranSid);
+            System.out.println("加密后的数据： " + encryptedString);
             //解密
             String decryptedString = decrypt(key,encryptedString);
             System.out.println(decryptedString);
 
-            *//*String toUrl = "https%3A%2F%2Fmgb.cn%2Ftest_shop_jz%2F%23%2F%3Fp1%3Djz";
+            String toUrl = "https%3A%2F%2Fmgb.cn%2Ftest_shop_jz%2F%23%2F%3Fp1%3Djz";
             String decodeURL = URLDecoder.decode(toUrl, "UTF-8");
-            System.out.println(decodeURL);*//*
+            System.out.println(decodeURL);
 
             String result = defaultDecrypt(encryptStr);
             Object parse = JSON.parse(result);
-            System.out.println(parse);*/
+            System.out.println(parse);
 
             System.out.println("------------");
             String s = defaultDecrypt(encryptStr1);
