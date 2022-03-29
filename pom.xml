@@ -55,10 +55,10 @@
         </dependency>
         <!--rabbitmq依赖 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-amqp</artifactId>
-            <version>${spring-boot-amqp.version}</version>
-        </dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-amqp</artifactId>
+        <version>${spring-boot-amqp.version}</version>
+    </dependency>
         <!-- redisson -->
         <dependency>
             <groupId>org.redisson</groupId>
