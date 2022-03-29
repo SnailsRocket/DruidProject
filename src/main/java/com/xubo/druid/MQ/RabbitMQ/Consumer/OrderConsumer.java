@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.*;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 /**
  * @Author xubo
@@ -34,11 +36,14 @@ public class OrderConsumer {
             value = @Queue(value = MQConstant.ORDER_DELAY + "_QUEUE", durable = "true"),
             exchange = @Exchange(value = MQConstant.ORDER_EXCHANGE, durable = "true", type = ExchangeTypes.DIRECT)
     ))
+    @Transactional
     public void delayOrderReceive(String receiveStr) {
         try {
             Thread.sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
+            // 异常就回滚  这个 跟 @Transactional 注解的区别在哪
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
         }
         log.info("延时接收：" + receiveStr);
     }
