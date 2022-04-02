@@ -35,7 +35,7 @@ public class RabbitMQController {
      * @param jsonObject
      * @return
      */
-    @PostMapping("sendDelayMsg")
+    @PostMapping("/sendDelayMsg")
     public JSONObject sendDelayMsg(@RequestBody JSONObject jsonObject) {
         return rabbitMQService.sendDelayMsg(jsonObject);
     }

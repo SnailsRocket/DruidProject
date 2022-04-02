@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,7 +45,15 @@ public class RabbitMQServiceImpl implements RabbitMQService {
 
     @Override
     public JSONObject sendDelayMsg(JSONObject jsonObject) {
-
+        Map<String, String> paramMap = new HashMap(){{
+            put("name", "xubo");
+            put("age", "12");
+            put("address", "深圳");}};
+        log.info(LocalDateTime.now().toString() + " - 发送消息到MQ: " + paramMap.toString());
+        rabbitTemplate.convertAndSend(MQConstant.DELAY_QUEUE, MQConstant.DELAY_QUEUE + "_QUEUE", JSON.toJSONString(paramMap), a -> {
+            a.getMessageProperties().setDelay(60000);
+            return a;
+        });
         return null;
     }
 }

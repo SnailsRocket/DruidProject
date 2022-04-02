@@ -10,5 +10,6 @@ public class MQConstant {
 
     public final static String ORDER_DELAY = "ORDER_DELAY";
 
+    public final static String DELAY_QUEUE = "DELAY_QUEUE";
 
 }
