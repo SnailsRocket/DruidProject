@@ -18,6 +18,12 @@ import java.util.Date;
 @Component
 public class DeadLetterQueueConsumer {
 
+    /**
+     * 消息在6秒后变成死信消息，然后被消费
+     * @param message
+     * @param channel
+     * @throws IOException
+     */
     @RabbitListener(queues = RabbitMQBindConfig.DEAD_LETTER_QUEUEA_NAME)
     public void receiveA(Message message, Channel channel) throws IOException {
         String msg = new String(message.getBody());
@@ -25,6 +31,12 @@ public class DeadLetterQueueConsumer {
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
+    /**
+     * 消息在60s 后变成死信消息，然后被消费
+     * @param message
+     * @param channel
+     * @throws IOException
+     */
     @RabbitListener(queues = RabbitMQBindConfig.DEAD_LETTER_QUEUEB_NAME)
     public void receiveB(Message message, Channel channel) throws IOException {
         String msg = new String(message.getBody());

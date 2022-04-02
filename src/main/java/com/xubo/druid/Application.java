@@ -13,6 +13,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * reastTemplate事故  https://blog.csdn.net/weixin_45431247/article/details/103627301     https://www.cnblogs.com/jimw/p/9037542.html  https://www.jianshu.com/p/2d05397688dd
  * 投票系统设计
  * test master
+ * 集合 多线程
+ * Redis MQ ES  Cloud
  *
  */
 @SpringBootApplication
