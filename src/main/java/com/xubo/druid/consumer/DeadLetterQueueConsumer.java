@@ -44,4 +44,11 @@ public class DeadLetterQueueConsumer {
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
+    @RabbitListener(queues = RabbitMQBindConfig.DEAD_LETTER_QUEUEC_NAME)
+    public void receiveC(Message message, Channel channel) throws IOException {
+        String msg = new String(message.getBody());
+        log.info("当前时间：{},死信队列C收到消息：{}", new Date().toString(), msg);
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+    }
+
 }
