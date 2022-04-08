@@ -25,6 +25,8 @@ import javax.validation.Valid;
  * Valid 没有分组的功能
  * Validate(group = {AddGroup.class})  只校验实体类中标记了 AddGroup.class 的属性 没标记就都要校验  Validate 是 Valid 的一种封装
  *
+ * 自定义group
+ *
  */
 @RestController
 @RequestMapping("/validate")
