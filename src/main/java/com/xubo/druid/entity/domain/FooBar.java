@@ -14,6 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -57,6 +58,8 @@ public class FooBar implements Serializable {
 //    @TableField(typeHandler = RemarkTypeHandler.class)
     @TableField(typeHandler = JacksonTypeHandler.class)
     private Map<String, Object> remark;
+
+    private LocalDateTime createTime;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -3,7 +3,6 @@ package com.xubo.druid.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.xubo.druid.entity.ValidateEntity;
 import com.xubo.druid.validate.AddGroup;
-import com.xubo.druid.validate.UpdateGroup;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
