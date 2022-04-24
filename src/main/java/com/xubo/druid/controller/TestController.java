@@ -84,5 +84,11 @@ public class TestController {
         return paramsList;
     }
 
+    public static void main(String[] args) {
+        Integer in = Integer.valueOf(0);
+        Integer ou = Integer.valueOf(0);
+        System.out.println(in.compareTo(ou));
+
+    }
 
 }
