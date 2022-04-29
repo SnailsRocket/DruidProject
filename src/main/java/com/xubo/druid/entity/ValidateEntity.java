@@ -19,7 +19,7 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ValidateEntity {
+public class ValidateEntity implements Cloneable{
 
     @NotNull(groups = {UpdateGroup.class}, message = "修改时id必须存在！")
     @Null(groups = AddGroup.class, message = "新增id必须为空")
