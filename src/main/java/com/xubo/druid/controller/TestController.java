@@ -88,7 +88,16 @@ public class TestController {
         Integer in = Integer.valueOf(0);
         Integer ou = Integer.valueOf(0);
         System.out.println(in.compareTo(ou));
-
+        List<Integer> int1 = Arrays.asList(1, 2, 3);
+        List<Integer> int2 = Arrays.asList(1, 2, 3);
+        List<Integer> int3 = Arrays.asList(1, 2);
+        List<Integer> int4 = new ArrayList<>();
+        System.out.println("int1.containsAll(int2) = " + int1.containsAll(int2));
+        System.out.println("int1.containsAll(int3) = " + int1.containsAll(int3));
+        System.out.println("int3.containsAll(int1) = " + int3.containsAll(int1));
+        int4.addAll(int1);
+        int4.removeAll(int3);
+        System.out.println("int4 = " + int4);
     }
 
 }
