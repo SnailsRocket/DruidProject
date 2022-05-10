@@ -18,3 +18,5 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+client:
+  voteSystem: voteSystem

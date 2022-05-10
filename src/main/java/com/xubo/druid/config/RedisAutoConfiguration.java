@@ -32,4 +32,17 @@ public class RedisAutoConfiguration {
                 .setDatabase(0);
         return (Redisson) Redisson.create(config);
     }
+
+    public static void main(String[] args) {
+        Integer inte = new Integer(10);
+        Integer integer = new Integer(9);
+        Integer integer1 = new Integer(10);
+        Integer integer2 = new Integer(12);
+        System.out.println("inte.compareTo(integer) = " + inte.compareTo(integer));
+        System.out.println("inte.compareTo(integer1) = " + inte.compareTo(integer1));
+        System.out.println("inte.compareTo(integer2) = " + inte.compareTo(integer2));
+
+
+    }
+
 }

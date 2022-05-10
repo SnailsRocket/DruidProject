@@ -3,6 +3,7 @@ package com.xubo.druid;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @Author xubo
@@ -19,6 +20,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @MapperScan(basePackages = "com.xubo.druid.mapper")
+@EnableFeignClients("com.xubo.druid.client")
 public class Application {
 
     public static void main(String[] args) {
