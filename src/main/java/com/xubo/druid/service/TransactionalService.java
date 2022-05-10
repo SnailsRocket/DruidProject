@@ -10,5 +10,7 @@ public interface TransactionalService {
 
     void transferMethod();
 
+    Integer mulUpdateError();
 
+    Integer mulUpdateErrorPro();
 }
