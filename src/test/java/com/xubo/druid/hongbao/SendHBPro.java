@@ -17,6 +17,7 @@ import java.util.concurrent.Future;
 /**
  * @Author xubo
  * @Date 2022/5/13 17:23
+ * 拆分不均匀，后期优化
  */
 public class SendHBPro {
 
