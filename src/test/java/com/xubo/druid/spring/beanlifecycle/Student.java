@@ -11,6 +11,8 @@ import java.util.Objects;
  * Spring Bean 的生命周期
  * bean自身的方法  cuetomeInit  CustomDestory
  * bean 级生命周期接口的方法  实现了 BeanFactoryAware  BeanNameAware  InitializingBean  DisposableBean 的方法
+ *  Spring 容器可以管理 singleton 作用域下 bean 的生命周期，在此作用域下，Spring 能够精确地知道bean何时被创建，何时初始化完成，以及何时被销毁。而对于 prototype 作用域的bean，
+ *  Spring只负责创建，当容器创建了 bean 的实例后，bean 的实例就交给了客户端的代码管理，Spring容器将不再跟踪其生命周期，并且不会管理那些被配置成prototype作用域的bean的生命周期。
  */
 public class Student implements BeanFactoryAware, BeanNameAware, InitializingBean, DisposableBean {
     private String name;
