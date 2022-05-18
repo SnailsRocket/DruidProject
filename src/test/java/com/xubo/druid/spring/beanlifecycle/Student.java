@@ -66,7 +66,7 @@ public class Student implements BeanFactoryAware, BeanNameAware, InitializingBea
     public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
         System.out.println("beanFactory contains bean student is " + beanFactory.containsBean("student"));
         System.out.println("beanFactory contains bean is " + beanFactory.toString());
-        System.out.println("BeanFactoryAware 的 setBeanFactory方法" + beanFactory.toString());
+        System.out.println("BeanFactoryAware 的 setBeanFactory方法 " + beanFactory.toString());
     }
 
     @Override

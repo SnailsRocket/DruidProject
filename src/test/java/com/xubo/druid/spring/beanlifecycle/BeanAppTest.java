@@ -8,6 +8,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @Date 2022/1/5 16:25
  * 参考博客  https://blog.csdn.net/csdn_wangchen/article/details/86704018?spm=1001.2014.3001.5501
  *  https://blog.csdn.net/qq_35634181/article/details/104473308?spm=1001.2101.3001.6650.5&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EOPENSEARCH%7Edefault-5.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EOPENSEARCH%7Edefault-5.no_search_link&utm_relevant_index=10
+ *  Bean 生命周期参考  https://jiming.blog.csdn.net/article/details/95996912
  */
 public class BeanAppTest {
 
