@@ -1,5 +1,6 @@
 package com.xubo.druid.util.convertlist;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,8 +23,12 @@ public class ConvertListDate {
         List<DateConvertSource> dateConvertSourceList = new ArrayList<>();
         fillDate(dateConvertSourceList);
         List<DateConvertTarget> dateConvertTargetList = copyListDate(dateConvertSourceList, new TypeReference<List<DateConvertTarget>>(){});
+        List<DateConvertTarget> dateConvertTargets = JSON.parseObject(JSON.toJSONString(dateConvertSourceList), new com.alibaba.fastjson.TypeReference<List<DateConvertTarget>>() {
+        });
         System.out.println(dateConvertTargetList);
         System.out.println(dateConvertSourceList.size());
+        System.out.println("dateConvertTargets = " + dateConvertTargets);
+        System.out.println("dateConvertTargets.size() = " + dateConvertTargets.size());
 
     }
 
